@@ -99,6 +99,22 @@ const myRadarChart = new Chart(radar, {
   }
 });
 
+const radarSelect = document.getElementById('radarSelect');
+data.forEach((cereal, index) => {
+  const node = document.createElement("option");
+  node.value = index;
+  node.innerHTML = cereal.name
+  radarSelect.appendChild(node)
+});
+
+radarSelect.onchange = () => {
+  const index = radarSelect.options[radarSelect.selectedIndex].value
+  myRadarChart.data.datasets[0].label =  index;
+  myRadarChart.data.datasets[0].data = cerealKeys.map(key => data[index][key])
+  myRadarChart.update()
+}
+
+
 const doughnut = document.getElementById('doughnut').getContext('2d');
 
 const doughData = data.reduce((obj, cereal) => {
