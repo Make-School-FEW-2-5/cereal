@@ -1,4 +1,4 @@
-[
+export const data = [
   {
     "name": "100% Bran",
     "mfr": "N",
